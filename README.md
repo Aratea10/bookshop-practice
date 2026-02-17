@@ -22,18 +22,18 @@ El principal requisito técnico de la práctica es el uso de **Node.js** con **T
 ### Funcionalidades Obligatorias
 
 - **Autenticación de usuario**: Registro (signup) e inicio de sesión (signin) con **tokens JWT**. Las contraseñas se almacenan hasheadas con bcrypt.
-- **Gestión de libros**: CRUD completo con creación, edición (solo por el dueño) y consulta de libros.
+- **Gestión de libros**: CRUD completo con creación, edición, eliminación (solo por el dueño) y consulta de libros.
 - **Compra de libros**: Endpoint dedicado (`POST /books/:id/buy`) que cambia el estado del libro a `SOLD`, registra la fecha de venta y envía un email de notificación al vendedor.
 - **Consulta pública**: Listado de libros publicados con búsqueda por título o autor y paginación. Solo muestra libros con estado `PUBLISHED`.
 - **Mis libros**: Endpoint privado (`GET /me/books`) para que cada usuario vea todos sus libros (publicados y vendidos).
 - **Tarea programada**: Cron job semanal (lunes a las 10:00) que envía un email sugiriendo bajada de precio a los vendedores con libros publicados hace más de 7 días.
-- **Tests e2e**: 13 tests cubriendo los endpoints de crear libro, consultar libros y comprar libro.
+- **Tests e2e**: 19 tests en 5 suites cubriendo los endpoints de crear libro, consultar libros, comprar libro y mis libros.
 
 ### Reglas de Negocio
 
 - **Email único**: No se pueden registrar dos usuarios con el mismo email.
 - **Contraseñas hasheadas**: Las contraseñas nunca se almacenan en texto plano.
-- **Solo el dueño edita**: Únicamente el propietario del libro puede modificar sus datos.
+- **Solo el dueño edita y elimina**: Únicamente el propietario del libro puede modificar o eliminar sus datos.
 - **No puedes comprar tu propio libro**: Validación que impide la autocompra.
 - **Libros vendidos ocultos**: Los libros con estado `SOLD` no aparecen en la consulta pública.
 - **Notificación al vendedor**: Al comprarse un libro, se envía un email automático al vendedor.
@@ -117,12 +117,13 @@ Los tests utilizan `mongodb-memory-server`, por lo que **no necesitan Docker** n
 
 ### Libros (requieren autenticación)
 
-| Método | Ruta                 | Descripción                     |
-| ------ | -------------------- | ------------------------------- |
-| `POST` | `/books`             | Crear un nuevo libro            |
-| `PUT`  | `/books/:bookId`     | Editar un libro (solo el dueño) |
-| `POST` | `/books/:bookId/buy` | Comprar un libro                |
-| `GET`  | `/me/books`          | Ver mis libros                  |
+| Método | Ruta                 | Descripción                       |
+| ------ | -------------------- | -------------------------------   |
+| `POST` | `/books`             | Crear un nuevo libro              |
+| `PUT`  | `/books/:bookId`     | Editar un libro (solo el dueño)   |
+| `DELETE` | `/books/:bookId`   | Eliminar un libro (solo el dueño) |
+| `POST` | `/books/:bookId/buy` | Comprar un libro                  |
+| `GET`  | `/me/books`          | Ver mis libros                    |
 
 > Para los endpoints privados, envía el token en la cabecera: `Authorization: Bearer <token>`
 
