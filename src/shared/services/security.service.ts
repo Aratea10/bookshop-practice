@@ -12,7 +12,7 @@ export const securityService = {
     async comparePasswords(incoming: string, stored: string): Promise<boolean> {
         const isMatch = await bcrypt.compare(incoming, stored);
         if (!isMatch) {
-            throw new UnauthorizedError('Contraseña incorrecta');
+            throw new UnauthorizedError('Email o contraseña incorrectos');
         }
         return isMatch;
     },
