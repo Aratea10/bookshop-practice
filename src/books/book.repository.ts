@@ -57,7 +57,7 @@ export const bookRepository = {
     },
 
     async update(bookId: string, data: UpdateBookData) {
-        return BookModel.findByIdAndUpdate(bookId, data, { new: true });
+        return BookModel.findByIdAndUpdate(bookId, data, { returnDocument: 'after' });
     },
 
     async delete(bookId: string) {
