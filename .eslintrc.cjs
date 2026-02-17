@@ -12,16 +12,16 @@ module.exports = {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
         ecmaVersion: 'latest',
-        sourceType: 'module,'
+        sourceType: 'module'
     },
 
     plugins: ['@typescript-eslint', 'import'],
 
     extends: [
-        'eslint:recomended',
-        'plugin:@typescript-eslint/recomended',
-        'plugin:@typescript-eslint/recomended-requiring-type-checking',
-        'pluging:import/recomended',
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:import/recommended',
         'plugin:import/typescript',
         'prettier',
     ],

@@ -10,7 +10,7 @@ export interface BookDocument {
     ownerId: Types.ObjectId;
     soldAt: Date | null;
     createdAt: Date;
-    updateAt: Date;
+    updatedAt: Date;
 }
 
 const bookSchema = new mongoose.Schema<BookDocument>(
