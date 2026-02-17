@@ -65,14 +65,18 @@ export const bookService = {
             soldAt: new Date(),
         } as any);
 
-        const seller = await userRepository.findById(book.ownerId.toString());
+        try {
+            const seller = await userRepository.findById(book.ownerId.toString());
 
-        if (seller) {
-            await emailService.sendEmail(
-                seller.email,
-                'Tu libro ha sido vendido',
-                `¡Enhorabuena! Tu libro "${book.title}" ha sido comprado.`
-            );
+            if (seller) {
+                await emailService.sendEmail(
+                    seller.email,
+                    'Tu libro ha sido vendido',
+                    `¡Enhorabuena! Tu libro "${book.title}" ha sido comprado.`
+                );
+            }
+        } catch {
+            console.log(`No se pudo enviar el email de notificación para el libro "${book.title}"`)
         }
 
         return soldBook;
