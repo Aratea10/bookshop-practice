@@ -8,14 +8,18 @@ export const runPriceSuggestionJob = async () => {
     const books = await bookRepository.findPublishedOlderThan(7);
 
     for (const book of books) {
-        const seller = await userRepository.findById(book.ownerId.toString());
+        try {
+            const seller = await userRepository.findById(book.ownerId.toString());
 
-        if (seller) {
-            await emailService.sendEmail(
-                seller.email,
-                'Sugerencia de bajada de precio',
-                `Hola, tu libro "${book.title}" lleva publicado más de 7 días. ¿Te gustaría bajar el precio para atraer más compradores?`
-            );
+            if (seller) {
+                await emailService.sendEmail(
+                    seller.email,
+                    'Sugerencia de bajada de precio',
+                    `Hola, tu libro "${book.title}" lleva publicado más de 7 días. ¿Te gustaría bajar el precio para atraer más compradores?`
+                );
+            }
+        } catch {
+            console.log(`No se pudo enviar sugerencia para el libro "${book.title}"`);
         }
     }
 
