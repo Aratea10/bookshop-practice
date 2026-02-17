@@ -32,6 +32,22 @@ export const updateBookController = async (req: Request, res: Response, next: Ne
     }
 };
 
+export const deleteBookController = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const userId = req.user!.id;
+        const bookId = req.params.bookId as string;
+
+        if (!bookId) {
+            throw new BadRequestError('El id del libro es obligatorio');
+        }
+
+        const result = await bookService.deleteBook(bookId, userId);
+        res.status(status.OK).json(result);
+    } catch (error) {
+        next(error);
+    }
+};
+
 export const buyBookController = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const buyerId = req.user!.id;

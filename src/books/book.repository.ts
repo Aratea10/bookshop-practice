@@ -58,6 +58,10 @@ export const bookRepository = {
         return BookModel.findByIdAndUpdate(bookId, data, { new: true });
     },
 
+    async delete(bookId: string) {
+        return BookModel.findByIdAndDelete(bookId);
+    },
+
     async findPublishedOlderThan(days: number) {
         const dateLimit = new Date();
         dateLimit.setDate(dateLimit.getDate() - days);

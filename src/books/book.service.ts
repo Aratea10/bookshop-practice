@@ -45,6 +45,22 @@ export const bookService = {
         return updatedBook;
     },
 
+    async deleteBook(bookId: string, userId: string) {
+        const book = await bookRepository.findById(bookId);
+
+        if (!book) {
+            throw new NotFoundError('Libro no encontrado');
+        }
+
+        if (book.ownerId.toString() !== userId) {
+            throw new ForbiddenError('Solo el dueño del libro puede eliminarlo');
+        }
+
+        await bookRepository.delete(bookId);
+
+        return { message: 'Libro eliminado correctamente' };
+    },
+
     async buyBook(bookId: string, buyerId: string) {
         const book = await bookRepository.findById(bookId);
 
@@ -76,7 +92,7 @@ export const bookService = {
                 );
             }
         } catch {
-            console.log(`No se pudo enviar el email de notificación para el libro "${book.title}"`)
+            console.log(`No se pudo enviar el email de notificación para el libro "${book.title}"`);
         }
 
         return soldBook;
