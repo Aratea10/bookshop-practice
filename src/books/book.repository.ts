@@ -12,6 +12,8 @@ interface UpdateBookData {
     description?: string;
     price?: number;
     author?: string;
+    status?: 'PUBLISHED' | 'SOLD';
+    soldAt?: Date | null;
 }
 
 export const bookRepository = {

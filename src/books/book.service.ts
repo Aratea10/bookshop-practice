@@ -79,7 +79,7 @@ export const bookService = {
         const soldBook = await bookRepository.update(bookId, {
             status: 'SOLD',
             soldAt: new Date(),
-        } as any);
+        });
 
         try {
             const seller = await userRepository.findById(book.ownerId.toString());
