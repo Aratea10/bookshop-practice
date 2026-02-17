@@ -6,7 +6,8 @@ export const createUser = async () => {
     const email = faker.internet.email();
     const password = faker.internet.password({ length: 8 });
 
-    await request(app).post('/authentication/signup').send({ email, password });
+    const signupResponse = await request(app).post('/authentication/signup').send({ email, password });
+    const userId = signupResponse.body.id;
 
     const signinResponse = await request(app)
         .post('/authentication/signin')
@@ -14,7 +15,7 @@ export const createUser = async () => {
 
     const token = signinResponse.body.token as string;
 
-    return { email, password, token };
+    return { email, password, token, userId };
 };
 
 export const createBook = async (token: string, overrides = {}) => {

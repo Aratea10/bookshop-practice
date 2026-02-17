@@ -1,6 +1,7 @@
 import express from 'express';
 import authRouter from './auth/auth.routes.js';
 import bookRouter from './books/book.routes.js';
+import myBooksRouter from './books/my-books.routes.js';
 import { errorHandlerMiddleware } from './shared/errors/error-handler.middleware.js';
 
 declare global {
@@ -19,5 +20,6 @@ app.use(express.json());
 
 app.use('/authentication', authRouter);
 app.use('/books', bookRouter);
+app.use('/me', myBooksRouter);
 
 app.use(errorHandlerMiddleware);
