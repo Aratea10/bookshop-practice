@@ -27,7 +27,7 @@ El principal requisito técnico de la práctica es el uso de **Node.js** con **T
 - **Consulta pública**: Listado de libros publicados con búsqueda por título o autor y paginación. Solo muestra libros con estado `PUBLISHED`.
 - **Mis libros**: Endpoint privado (`GET /me/books`) para que cada usuario vea todos sus libros (publicados y vendidos).
 - **Tarea programada**: Cron job semanal (lunes a las 10:00) que envía un email sugiriendo bajada de precio a los vendedores con libros publicados hace más de 7 días.
-- **Tests e2e**: 19 tests en 5 suites cubriendo los endpoints de crear libro, consultar libros, comprar libro y mis libros.
+- **Tests e2e**: 19 tests en 5 suites cubriendo los endpoints de crear libro, consultar libros, comprar libro, eliminar libro y mis libros.
 
 ### Reglas de Negocio
 
