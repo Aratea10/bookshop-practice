@@ -38,6 +38,21 @@ El principal requisito técnico de la práctica es el uso de **Node.js** con **T
 - **Libros vendidos ocultos**: Los libros con estado `SOLD` no aparecen en la consulta pública.
 - **Notificación al vendedor**: Al comprarse un libro, se envía un email automático al vendedor.
 
+## 🏗️ Arquitectura
+
+El módulo de **Books** sigue una **arquitectura hexagonal** (Ports & Adapters), separando la lógica de negocio de los detalles de infraestructura:
+
+```text
+src/books/
+├── domain/           # Entidades y puertos (contratos/interfaces)
+├── application/      # Casos de uso (lógica de negocio)
+└── infrastructure/   # Implementaciones concretas (Express, MongoDB)
+```
+
+- **Domain**: Define las entidades (`Book`) y los puertos (`BookRepositoryPort`, `EmailPort`, `UserRepositoryPort`), sin dependencias externas.
+- **Application**: Contiene los casos de uso (`CreateBookUseCase`, `BuyBookUseCase`, etc.), que orquestan la lógica de negocio usando los puertos.
+- **Infrastructure**: Implementa los puertos con tecnologías concretas (Mongoose, Mailtrap, Express) y contiene el *composition root* que conecta todas las piezas.
+
 ## 🚀 Instalación y Puesta en Marcha
 
 ### Requisitos previos
