@@ -1,7 +1,7 @@
 import express from 'express';
 import authRouter from './auth/auth.routes.js';
-import bookRouter from './books/book.routes.js';
-import myBooksRouter from './books/my-books.routes.js';
+import bookRouter from './books/infrastructure/book.routes.js';
+import myBooksRouter from './books/infrastructure/my-books.routes.js';
 import { errorHandlerMiddleware } from './shared/errors/error-handler.middleware.js';
 
 declare global {
