@@ -7,7 +7,7 @@ describe('DELETE /books/:bookId', () => {
         const { token } = await createUser();
 
         const createResponse = await createBook(token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         const response = await request(app)
             .delete(`/books/${bookId}`)
@@ -25,7 +25,7 @@ describe('DELETE /books/:bookId', () => {
         const otherUser = await createUser();
 
         const createResponse = await createBook(owner.token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         const response = await request(app)
             .delete(`/books/${bookId}`)
@@ -48,7 +48,7 @@ describe('DELETE /books/:bookId', () => {
         const { token } = await createUser();
 
         const createResponse = await createBook(token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         const response = await request(app).delete(`/books/${bookId}`);
 

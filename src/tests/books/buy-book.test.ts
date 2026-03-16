@@ -8,7 +8,7 @@ describe('POST /books/:bookId/buy', () => {
         const buyer = await createUser();
 
         const createResponse = await createBook(seller.token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         const response = await request(app)
             .post(`/books/${bookId}/buy`)
@@ -23,7 +23,7 @@ describe('POST /books/:bookId/buy', () => {
         const seller = await createUser();
 
         const createResponse = await createBook(seller.token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         const response = await request(app)
             .post(`/books/${bookId}/buy`)
@@ -38,7 +38,7 @@ describe('POST /books/:bookId/buy', () => {
         const buyer2 = await createUser();
 
         const createResponse = await createBook(seller.token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         await request(app)
             .post(`/books/${bookId}/buy`)
@@ -66,7 +66,7 @@ describe('POST /books/:bookId/buy', () => {
         const buyer = await createUser();
 
         const createResponse = await createBook(seller.token);
-        const bookId = createResponse.body._id;
+        const bookId = createResponse.body.id;
 
         await request(app)
             .post(`/books/${bookId}/buy`)
