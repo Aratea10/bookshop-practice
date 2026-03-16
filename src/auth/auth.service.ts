@@ -1,6 +1,8 @@
-import { userRepository } from '../users/user.repository.js';
+import { MongoUserRepository } from '../users/infrastructure/mongo-user.repository.js';
 import { securityService } from '../shared/services/security.service.js';
 import { ConflictError, UnauthorizedError } from '../shared/errors/app-error.js';
+
+const userRepository = new MongoUserRepository();
 
 export const authService = {
     async signup(email: string, password: string) {
