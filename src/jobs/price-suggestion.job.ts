@@ -1,6 +1,10 @@
-import { bookRepository } from '../books/book.repository.js';
-import { userRepository } from '../users/user.repository.js';
-import { emailService } from '../shared/services/email.service.js';
+import { MongoBookRepository } from '../books/infrastructure/mongo-book.repository.js';
+import { MongoUserRepository } from '../users/infrastructure/mongo-user.repository.js';
+import { MailtrapEmailAdapter } from '../shared/infrastructure/mailtrap-email.adapter.js';
+
+const bookRepository = new MongoBookRepository();
+const userRepository = new MongoUserRepository();
+const emailService = new MailtrapEmailAdapter();
 
 export const runPriceSuggestionJob = async () => {
     console.log('Ejecutando tarea de sugerencia de bajada de precio...');
