@@ -1,4 +1,4 @@
-# BookShop API - Práctica Backend Avanzado
+# 📚 BookShop API - Práctica Backend Avanzado
 
 <div align="center">
 
@@ -7,6 +7,9 @@
 [![Express](https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![Mongoose](https://img.shields.io/badge/mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)](https://mongoosejs.com/)
+[![Zod](https://img.shields.io/badge/zod-408AFF?style=for-the-badge&logo=zod&logoColor=white)](https://zod.dev/)
+[![Sentry](https://img.shields.io/badge/sentry-362D59?style=for-the-badge&logo=sentry&logoColor=white)](https://sentry.io/)
+[![Mailtrap](https://img.shields.io/badge/mailtrap-22D172?style=for-the-badge&logo=mailtrap&logoColor=white)](https://mailtrap.io/)
 [![Docker](https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Jest](https://img.shields.io/badge/jest-C21325?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/)
 [![ESLint](https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
@@ -49,7 +52,7 @@ El principal requisito técnico de la práctica es el uso de **Node.js** con **T
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <https://github.com/Aratea10/bookshop-practice.git>
+git clone https://github.com/Aratea10/bookshop-practice.git
 cd bookshop-practice
 ```
 
@@ -64,14 +67,14 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto:
 
 ```env
-ENVIRONMENT=local
+ENVIRONMENT="local"
 API_PORT=3000
-MONGO_USER=admin
-MONGO_PASSWORD=admin123
-MONGO_HOST=[localhost:27017](http://localhost:27017)
-JWT_SECRET=tu_secreto_super_seguro
-SENTRY_DSN=https://tu-dsn@sentry.io/123
-MAILTRAP_TOKEN=tu_token_de_mailtrap
+MONGO_USER="admin"
+MONGO_PASSWORD="admin123"
+MONGO_HOST="localhost:27017"
+JWT_SECRET="cambiar_por_tu_secret"
+SENTRY_DSN="cambiar_por_tu_dsn"
+MAILTRAP_TOKEN="cambiar_por_tu_token"
 ```
 
 ### 4. Levantar MongoDB con Docker
@@ -79,7 +82,7 @@ MAILTRAP_TOKEN=tu_token_de_mailtrap
 Asegúrate de tener Docker Desktop abierto:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Esto iniciará un contenedor MongoDB en segundo plano.
@@ -99,6 +102,8 @@ npm run test:e2e
 ```
 
 Los tests utilizan `mongodb-memory-server`, por lo que **no necesitan Docker** ni afectan a la base de datos real.
+
+---
 
 ## 📡 Endpoints
 
@@ -125,7 +130,9 @@ Los tests utilizan `mongodb-memory-server`, por lo que **no necesitan Docker** n
 | `POST` | `/books/:bookId/buy` | Comprar un libro                  |
 | `GET`  | `/me/books`          | Ver mis libros                    |
 
-> Para los endpoints privados, envía el token en la cabecera: `Authorization: Bearer <token>`
+> Para los endpoints privados, envía el token en la cabecera: `Authorization: Bearer <tu_token>`
+
+---
 
 ## 🛠️ Scripts Disponibles
 
@@ -138,6 +145,8 @@ Los tests utilizan `mongodb-memory-server`, por lo que **no necesitan Docker** n
 | `npm run lint`          | Ejecuta ESLint para verificar la calidad del código   |
 | `npm run prettier`      | Formatea el código con Prettier                       |
 | `npm run build`         | Compila el proyecto TypeScript                        |
+
+---
 
 ## 🔧 Tecnologías Utilizadas
 
@@ -170,10 +179,10 @@ Si quieres mejorar el proyecto:
 
 ## 📄 Licencia
 
-Este proyecto se entrega con **Licencia MIT**.
+Este proyecto se entrega con [**Licencia MIT**](https://github.com/Aratea10/bookshop-practice/blob/main/LICENSE).
 
 ---
 
 ## 👩‍💻 Autora
 
-**Sara Gallego Méndez** — Estudiante Bootcamp Desarrollo Web FullStack
+**Sara Gallego Méndez** — Estudiante Bootcamp Desarrollo Web FullStack en [KeepCoding](https://keepcoding.io/).
